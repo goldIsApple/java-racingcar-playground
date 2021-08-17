@@ -37,8 +37,15 @@ public class Calculator {
 
     private Numbers mapNumbers(String expression) {
         List<Integer> numbers = Arrays.stream(expression.split(delimiterGroup.getRegexDelimiter()))
-                .map(str -> Integer.parseInt(str))
+                .map(str -> mapInt(str))
                 .collect(Collectors.toList());
         return new Numbers(numbers);
+    }
+    public int mapInt(String str){
+        int number = Integer.parseInt(str);
+        if(number<0){
+            throw new IllegalArgumentException("음수는 계산할수 없습니다.");
+        }
+        return number;
     }
 }
