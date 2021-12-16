@@ -37,7 +37,7 @@ public class Calculator {
 
     private Numbers mapNumbers(String expression) {
         List<Integer> numbers = Arrays.stream(expression.split(delimiterGroup.getRegexDelimiter()))
-                .map(str -> Integer.parseInt(str))
+                .map(Integer::parseInt)
                 .collect(Collectors.toList());
         return new Numbers(numbers);
     }
